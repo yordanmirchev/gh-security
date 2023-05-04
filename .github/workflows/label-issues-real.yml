@@ -5,11 +5,11 @@ on:
       - opened
 jobs:
   assign-label:
+    permissions:
+      issues: write #add specific permission, by default is write all
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
-          permissions:
-            issues: write #add specific permission, by default is write all 
         if: contains(github.event.issue.title, 'bug')
         run: |
           curl -X POST \
